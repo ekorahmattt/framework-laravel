@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\Prodi;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,7 +13,18 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', function () {
-    return view('welcome');
+    return view ('home',[
+        "prodis" => Prodi::all()
+        ]);
 });
+
+Route::get('/user/{nama}', function ($nama) {
+    return 'Halo '.$nama;
+});
+
+Route::get('/login', function () {
+    return view('login',[
+        'title'=>'Halaman Login'
+    ]);
+})->name('login');
