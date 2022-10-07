@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Models\Prodi;
+use App\Models\Mahasiswa;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,18 +14,19 @@ use App\Models\Prodi;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Route::get('/', function () {
-    return view ('home',[
-        "prodis" => Prodi::all()
-        ]);
+    return view('home', [
+        "mahasiswas" => Mahasiswa::all()
+    ]);
 });
 
 Route::get('/user/{nama}', function ($nama) {
-    return 'Halo '.$nama;
+    return 'Halo ' . $nama;
 });
 
 Route::get('/login', function () {
-    return view('login',[
-        'title'=>'Halaman Login'
+    return view('login', [
+        'title' => 'Halaman Login'
     ]);
 })->name('login');
