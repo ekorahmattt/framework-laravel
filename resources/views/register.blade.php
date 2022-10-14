@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Login Page</title>
+    <title>Register Page</title>
     <meta name="description" content="@yield('page_description', $page_description ?? '')"/>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/favicon.png') }}">
@@ -22,19 +22,23 @@
                         <div class="row no-gutters">
                             <div class="col-xl-12">
                                 <div class="auth-form">
-                                    <h4 class="text-center mb-4">LOGIN PRAKTIKUM FRAMEWORK</h4>
+                                    <h4 class="text-center mb-4">REGISTER PRAKTIKUM FRAMEWORK</h4>
+                                    @if(session('success'))
+                                    <div class="alert alert-success">
+                                        <b>Yeah!</b> {{session('success')}}
+                                    </div>
+                                    @endif
                                     @if(session('error'))
                                     <div class="alert alert-danger">
-                                        <b>Yeah!</b> {{session('error')}}
+                                        <b>Opps!</b> {{session('error')}}
                                     </div>
                                     @endif
-                                    @if(session('username'))
-                                    <div class="alert alert-danger">
-                                        <b>Opps!</b> {{session('username')}}
-                                    </div>
-                                    @endif
-                                    <form action="{{url('/action-login')}}" method="POST">
+                                    <form action="{{url('/action-register')}}" method="POST">
                                         @csrf
+                                        <div class="form-group">
+                                            <label class="mb-1"><strong>Name</strong></label>
+                                            <input type="text" class="form-control" placeholder="masukkan nama" name="name" required>
+                                        </div>
                                         <div class="form-group">
                                             <label class="mb-1"><strong>Email</strong></label>
                                             <input type="email" class="form-control" placeholder="masukkan email" name="email" required>
@@ -43,12 +47,16 @@
                                             <label class="mb-1"><strong>Password</strong></label>
                                             <input type="password" class="form-control" placeholder="masukkan password" name="password" required>
                                         </div>
+                                        <div class="form-group">
+                                            <label class="mb-1"><strong>Confirmation Password</strong></label>
+                                            <input type="password" class="form-control" placeholder="masukkan password" name="confirm_password" required>
+                                        </div>
                                         <div class="text-center">
-                                            <button type="submit" class="btn btn-primary btn-block">LOGIN</button>
+                                            <button type="submit" class="btn btn-primary btn-block">Register</button>
                                         </div>
                                     </form>
                                     <div class="new-account mt-3">
-                                        <p>Don't have an account? <a class="text-primary" href="/register">Sign up</a></p>
+                                        <p>Have an account? <a class="text-primary" href="/login">Login</a></p>
                                     </div>
                                 </div>
                             </div>
