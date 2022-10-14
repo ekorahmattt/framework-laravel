@@ -56,7 +56,7 @@
                                         </div>
                                     </form>
                                     <div class="new-account mt-3">
-                                        <p>Have an account? <a class="text-primary" href="/login">Login</a></p>
+                                        <p>Have an account? <a class="text-primary" href="{{route('login')}}">Login</a></p>
                                     </div>
                                 </div>
                             </div>

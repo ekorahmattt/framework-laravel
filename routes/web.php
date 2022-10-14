@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Models\Prodi;
 use App\Models\User;
 use App\Http\Controllers\AuthController;
+use App\Models\Mahasiswa;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,14 +16,16 @@ use App\Http\Controllers\AuthController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Route::get('/', function () {
     return view ('home',[
-        "prodis" => Prodi::all()
+        "prodis" => Prodi::all(),
+        "mahasiswas" => Mahasiswa::all()
         ]);
-})->middleware(['auth']);
+});
 
 Route::get('/user/{nama}', function ($nama) {
-    return 'Halo '.$nama;
+    return 'Halo ' . $nama;
 });
 
 Route::get('/login', 
