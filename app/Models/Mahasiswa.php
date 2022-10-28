@@ -15,5 +15,5 @@ class Mahasiswa extends Model
     }
 
     protected $table = "mahasiswas";
-    protected $fillable = ['id', 'nama', 'nim', 'jurusan', 'angkatan'];
+    protected $fillable = ['id', 'nama', 'nim', 'prodi_id'];
 }

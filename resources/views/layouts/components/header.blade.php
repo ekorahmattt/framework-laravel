@@ -10,7 +10,7 @@
 </a>
 <ul class="nav nav-pills">
 <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">Home</a></li>
-<li class="nav-item"><a href="#" class="nav-link" aria-current="page">Features</a></li>
+<li class="nav-item"><a href="{{route('mahasiswa.index')}}" class="nav-link" aria-current="page">Mahasiswa</a></li>
 <li class="nav-item"><a href="#" class="nav-link" aria-current="page">Pricing</a></li>
 <li class="nav-item"><a href="#" class="nav-link" aria-current="page">FAQs</a></li>
 <li class="nav-item"><a href="#" class="nav-link" aria-current="page">About</a></li>

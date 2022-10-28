@@ -19,6 +19,7 @@ class CreateMahasiswasTable extends Migration
             $table->string("nim")->unique();
             $table->foreignId('prodi_id');
             $table->timestamps();
+            $table->foreign('prodi_id')->references('id')->on('prodis');
         });
     }
 
