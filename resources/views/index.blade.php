@@ -10,7 +10,7 @@
             </div>
         @endif
 
-        <a href="" class=""><Button class="btn btn-primary mb-3">Tambah</Button></a>
+        <a href="/mahasiswa/create" class=""><Button class="btn btn-primary mb-3">Tambah</Button></a>
 
         <table class="table">
             <thead>
