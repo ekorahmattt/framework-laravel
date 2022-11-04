@@ -45,7 +45,7 @@ Route::post('/action-register',
 Route::get('/logout', 
     [AuthController::class, 'logout']);
 
-Route::get("/mahasiswa", [MahasiswaController::class, 'index'])->name("mahasiswa.index");
+Route::get("/mahasiswa", [MahasiswaController::class, 'indexku'])->name("mahasiswa.index");
 Route::get("/mahasiswa/create", [MahasiswaController::class, 'create']);
 
 Route::post("/mahasiswa/store", [MahasiswaController::class, 'store']);

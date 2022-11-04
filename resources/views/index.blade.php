@@ -23,21 +23,25 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($mahasiswas as $mahasiswa)
+                @foreach ($mahasiswas['data'] as $mahasiswa)
                     <tr>
-                        <th scope="row">{{ $mahasiswa->id }}</th>
-                        <td>{{ $mahasiswa->nama }}</td>
-                        <td>{{ $mahasiswa->nim }}</td>
-                        <td>{{ $mahasiswa->prodi->nama }}</td>
+                        <th scope="row">{{ $mahasiswa['id'] }}</th>
+                        <td>{{ $mahasiswa['nama'] }}</td>
+                        <td>{{ $mahasiswa['nim'] }}</td>
+                        <td>{{ $mahasiswa['prodi_nama'] }}</td>
                         <td>
 
-                            <a href="/mahasiswa/show/{{ $mahasiswa->id }}" class=""><Button class="btn btn-success mb-3">Lihat</Button></a>
-                            <a href="/mahasiswa/{{ $mahasiswa->id }}/edit" class=""><Button class="btn btn-warning mb-3">Edit</Button></a>
-                            <form action="{{route('mahasiswa.delete',$mahasiswa->id)}}" method="post" style="display:inline" onsubmit="confirm('Apakah anda yakin ingin menghapus mahasiswa ini?')">
+                            <a href="/mahasiswa/show/{{ $mahasiswa['id'] }}" class=""><Button
+                                    class="btn btn-success mb-3">Lihat</Button></a>
+                            <a href="/mahasiswa/{{ $mahasiswa['id'] }}/edit" class=""><Button
+                                    class="btn btn-warning mb-3">Edit</Button></a>
+                            <form action="{{ route('mahasiswa.delete', $mahasiswa['id']) }}" method="post"
+                                style="display:inline"
+                                onsubmit="confirm('Apakah anda yakin ingin menghapus mahasiswa ini?')">
                                 @csrf
                                 @method('delete')
                                 <button type="submit" class="btn btn-danger mb-3">Delete</button>
-                            </form> 
+                            </form>
                         </td>
                     </tr>
                 @endforeach
