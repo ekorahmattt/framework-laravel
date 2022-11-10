@@ -50,7 +50,7 @@ Route::get("/mahasiswa/create", [MahasiswaController::class, 'create']);
 
 Route::post("/mahasiswa/store", [MahasiswaController::class, 'store']);
 
-Route::get("/mahasiswa/show/{id}", [MahasiswaController::class, 'show'])->name("mahasiswa.show");
+Route::get("/mahasiswa/show/{id}", [MahasiswaController::class, 'showku'])->name("mahasiswa.show");
 
 Route::get("/mahasiswa/{id}/edit", [MahasiswaController::class, 'edit'])->name("mahasiswa.edit");
 Route::put("/mahasiswa/{id}", [MahasiswaController::class, 'update'])->name("mahasiswa.update");

@@ -13,6 +13,12 @@
     composer install
     ```
 
+    Jalankan perintah di bawah untuk install Node Package (Jalankan perintah sebelum perintah Step 7.1 )
+
+    ```bash
+    npm install
+    ```
+
 3. Buat file `.env`.
 
     ```bash
@@ -40,6 +46,7 @@
 7. Karena Laravel tidak bisa memanggil API dari URI yang sama dengan si App, jadi kita akan menjalankan dua perintah.
 
     - Untuk Si App
+
         ```bash
         php artisan serve --port=8000
         ```
@@ -48,5 +55,11 @@
         ```bash
         php artisan serve --port=8001
         ```
+
+    7.1 Atau kalian mager, kalian bisa jalankan perintah menggunakan `npm`
+
+    ```bash
+    npm run dev
+    ```
 
 I knew that it's not very convinient but ada banyak project yang frontend/backendnya dipisah dan dihubungkan menggunakan API.

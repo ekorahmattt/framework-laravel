@@ -16,7 +16,7 @@
                     <h4>:</h4>
                 </td>
                 <td>
-                    <h4>{{ $mahasiswa->nama }}</h4>
+                    <h4>{{ $mahasiswa['nama'] }}</h4>
                 </td>
             </tr>
             <tr>
@@ -27,7 +27,7 @@
                     <h4>:</h4>
                 </td>
                 <td>
-                    <h4>{{ $mahasiswa->nim }}</h4>
+                    <h4>{{ $mahasiswa['nim'] }}</h4>
                 </td>
             </tr>
             <tr>
@@ -38,7 +38,7 @@
                     <h4>:</h4>
                 </td>
                 <td>
-                    <h4>{{ $mahasiswa->prodi->nama }}</h4>
+                    <h4>{{ $mahasiswa['prodi_nama'] }}</h4>
                 </td>
             </tr>
         </table>

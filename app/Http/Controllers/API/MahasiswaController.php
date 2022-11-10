@@ -15,8 +15,7 @@ class MahasiswaController extends Controller
 
 
         foreach ($mahasiswas as  $mahasiswa) {
-            $prodi = Prodi::where('id', $mahasiswa['prodi_id'])->first();
-            $mahasiswa['prodi_nama'] = $prodi['nama'];
+            $mahasiswa['prodi_nama'] = $mahasiswa->prodi->nama;
         }
         $respon = [
             'status' => 'success',
@@ -30,7 +29,9 @@ class MahasiswaController extends Controller
 
     public function mahasiswa($id)
     {
-        $mahasiswa = Mahasiswa::where('id', $id)->get();
+        $mahasiswa = Mahasiswa::where('id', $id)->get()->first();
+
+        $mahasiswa['prodi_nama'] = $mahasiswa->prodi->nama;
         $respon = [
             'status' => 'success',
             'msg' => 'Berhasil Mengambil data Mahasiswa',
@@ -41,16 +42,32 @@ class MahasiswaController extends Controller
 
     public function createMahasiswa(Request $request)
     {
-        $mahasiswa = Mahasiswa::create([
-            'nama' => $request->nama,
-            'nim' => $request->nim,
-            'prodi_id' => $request->prodi_id,
+
+        $validateData = $request->validate([
+            'nama' => 'required|string|max:100',
+            'nim' => 'required|unique:mahasiswas|string',
+            'prodi_id' => 'required',
         ]);
+
+        $mahasiswa = Mahasiswa::create($validateData);
         $respon = [
             'status' => 'success',
             'msg' => 'Berhasil Membuat data Mahasiswa',
             'data' => $mahasiswa,
         ];
         return response()->json($respon);
+    }
+
+    public function getProdis()
+    {
+        $prodis = Prodi::all();
+
+        $respon = [
+            'status' => 'success',
+            'msg' => 'Tuh data Prodi',
+            'data' => $prodis,
+        ];
+
+        return response()->json($prodis);
     }
 }

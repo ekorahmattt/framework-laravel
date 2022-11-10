@@ -24,3 +24,5 @@ Route::get('/mahasiswa', [MahasiswaController::class, 'getMahasiswa']);
 Route::get('/mahasiswa/{id}', [MahasiswaController::class, 'mahasiswa']);
 
 Route::post('/mahasiswa/create', [MahasiswaController::class, 'createMahasiswa']);
+
+Route::get('/prodi', [MahasiswaController::class, 'getProdis']);

@@ -29,14 +29,12 @@ invalid @enderror" id="nama" name="nama"
                 @enderror
             </div>
             <div class="mb-3">
-                <label for="prodi" class="form-label ">Prodi</label>
-                <select name="prodi_id" id="prodi_id" class="form-select
-
-@error('prodi_id') is-invalid @enderror"
+                <label for="prodi" class="form-label">Prodi</label>
+                <select name="prodi_id" id="prodi_id" class="form-select @error('prodi_id') is-invalid @enderror"
                     aria-label="Default select example">
                     <option value="" selected>Pilih</option>
                     @foreach ($prodis as $prodi)
-                        <option value={{ $prodi->id }}>{{ $prodi->nama }}</option>
+                        <option value={{ $prodi['id'] }}>{{ $prodi['nama'] }}</option>
                     @endforeach
                 </select>
                 @error('prodi_id')

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Mahasiswa;
 use App\Models\Prodi;
 use GuzzleHttp\Client;
+use Illuminate\Support\Facades\Redis;
 
 class MahasiswaController extends Controller
 {
@@ -17,6 +18,7 @@ class MahasiswaController extends Controller
         ]);
     }
 
+    // Fungsi Untuk Menampilkan semua mahasiswa API
     public function indexku()
     {
         $endpoint = env('BASE_ENV') . '/api/mahasiswa';
@@ -24,7 +26,7 @@ class MahasiswaController extends Controller
 
         $response = $client->request('GET', $endpoint);
         $data = json_decode($response->getBody(), true);
-        
+
         return view('index')
             ->with('mahasiswas', $data)
             ->with('Title', 'Mahasiswas');
@@ -36,6 +38,19 @@ class MahasiswaController extends Controller
             'prodis' => Prodi::all(),
             'title' => 'Create Mahasiswa',
         ]);
+    }
+
+    // Fungsi untuk halaman Tambah dengan API
+    public function createku()
+    {
+        $endpoint = env('BASE_ENV') . '/api/prodi';
+        $client = new Client();
+
+        $response = $client->request('GET', $endpoint);
+
+        $data = json_decode($response->getBody(), true);
+
+        return view('create')->with('prodis', $data['data']);
     }
 
     public function store(Request $request)
@@ -51,12 +66,25 @@ class MahasiswaController extends Controller
         return redirect('/mahasiswa')->with('success', 'Berhasil Menambahkan data mahasiswa');
     }
 
+
     public function show(Mahasiswa $id)
     {
         return view('show', [
             'mahasiswa' => $id,
             'title' => 'Mahasiswa',
         ]);
+    }
+
+    // Fungsi Untuk Menampilkan Single Data Menggunakan API
+    public function showku($id)
+    {
+        $endpoint = env('BASE_ENV') . "/api/mahasiswa/$id";
+        $client = new Client();
+
+        $response = $client->request('GET', $endpoint);
+        $data = json_decode($response->getBody(), true);
+
+        return view('show')->with('mahasiswa', $data['data']);
     }
 
     public function edit(Mahasiswa $id)
